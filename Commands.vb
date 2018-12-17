@@ -26,6 +26,8 @@ Imports Autodesk.AutoCAD.Geometry
 Imports Autodesk.AutoCAD.Colors
 Imports Excel = Microsoft.Office.Interop.Excel
 
+
+
 Imports System
 Imports System.IO
 Imports System.Text
@@ -1763,12 +1765,7 @@ Public Class Commands
     Dim xpath As StringBuilder = New StringBuilder()
     Dim xmlNode As XmlElement
 
-    Dim xmlAmps As XmlElement
-    Dim xmlTaps As XmlElement
-    Dim xmlSplitters As XmlElement
-    Dim xmlCabels As XmlElement
-    Dim xmlSigPoints As XmlElement
-    Dim s, strXpath As String
+    Dim strXpath As String
 
     xpath.Append("descendant::Drawing//*[Handle='")
     xpath.Append(Handle)
@@ -1788,65 +1785,6 @@ Public Class Commands
 
     Return "Ok"
 
-
-    'Dim ss As String = xpath.ToString()
-    'xmlCabels = doc.Item("Cables").SelectSingleNode(xpath.ToString())
-    ''  elements.RemoveAll()
-    'If xmlCabels Is Nothing Then
-    '  xpath = New StringBuilder()
-    '  xpath.Append("descendant::Tap[Handle='")
-    '  xpath.Append(Handle)
-    '  xpath.Append("']")
-    '  xmlTaps = doc.Item("Taps").SelectSingleNode(xpath.ToString())
-    '  If xmlTaps Is Nothing Then
-    '    xpath = New StringBuilder()
-    '    xpath.Append("descendant::Splitter[Handle='")
-    '    xpath.Append(Handle)
-    '    xpath.Append("']")
-    '    xmlSplitters = doc.Item("Splitters").SelectSingleNode(xpath.ToString())
-    '    If xmlSplitters Is Nothing Then
-    '      xpath = New StringBuilder()
-    '      xpath.Append("descendant::Amplifier[Handle='")
-    '      xpath.Append(Handle)
-    '      xpath.Append("']")
-    '      xmlAmps = doc.Item("Amplifiers").SelectSingleNode(xpath.ToString())
-    '      If xmlAmps Is Nothing Then
-    '        xpath = New StringBuilder()
-    '        xpath.Append("descendant::SignalPoint[Handle='")
-    '        xpath.Append(Handle)
-    '        xpath.Append("']")
-    '        xmlSigPoints = doc.Item("SignalPoints").SelectSingleNode(xpath.ToString())
-    '        If xmlSigPoints Is Nothing Then
-    '          Return "Error"
-    '        Else
-    '          'Здесь необходимо реализовать привязку усилителя к узлам
-    '          'Dim sx As String
-    '          'sx = xmlSigPoints.Item("X").FirstChild.Value
-    '          'Dim pt As Point3d = New Point3d(Double.Parse(xmlSigPoints.Item("X").FirstChild.Value.ToString), Double.Parse(xmlSigPoints.Item("Y").FirstChild.Value.ToString), Double.Parse(xmlSigPoints.Item("Z").FirstChild.Value.ToString))
-    '          s = xmlSigPoints.Item("OpticalNode").FirstChild.Value
-    '          Return s
-    '        End If
-    '      Else
-    '        s = xmlAmps.Item("Handle").FirstChild.Value
-    '        '  xmlAmps.RemoveAll()
-    '        Return s
-    '      End If
-    '    Else
-    '      s = xmlSplitters.GetAttribute("PARENT_CROSS")
-    '      'xmlSplitters.RemoveAll()
-    '      Return FindParentAmplifier(s, doc)
-    '    End If
-    '  Else
-    '    s = xmlTaps.GetAttribute("PARENT_CROSS")
-    '    'xmlTaps.RemoveAll()
-    '    Return FindParentAmplifier(s, doc)
-    '  End If
-    'Else
-    '  s = xmlCabels.GetAttribute("PARENT_CROSS").ToString()
-    '  'xmlCabels.RemoveAll()
-    '  Return FindParentAmplifier(s, doc)
-    'End If
-    'Return Handle
   End Function
 
 
